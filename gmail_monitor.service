@@ -1,0 +1,6 @@
+Description=Monitor gmail for automation commands
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/ubuntu/gmail_monitor/gmail_monitor.sh
