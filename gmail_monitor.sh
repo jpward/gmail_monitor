@@ -38,6 +38,6 @@ CMD="`echo $MSG | cut -d',' -f2 | sed 's/\"snippet\": \"\(.*\)\"/\1/'`"
 SCRIPT="`echo $CMD | cut -d':' -f2`"
 INPUT="`echo $CMD | cut -d':' -f3`"
 
-curl -H "Authorization: Bearer $TOK" https://www.googleapis.com/gmail/v1/users/me/threads/$ID/trash -X POST --header "Content-length:0"
+curl -H "Authorization: Bearer $TOK" https://www.googleapis.com/gmail/v1/users/me/threads/$ID/trash -X POST --header "Content-length:0" &
 
 $HERE/${SCRIPT}.sh "$INPUT"
