@@ -10,7 +10,7 @@ fi
 
 TOK="`cat /tmp/.meta | head -1`"
 RTOK="`cat /tmp/.meta | tail -1`"
-curl -s -H "Authorization: Bearer $TOK" https://www.googleapis.com/gmail/v1/users/me/threads > /tmp/curl.txt
+curl -s -H "Authorization: Bearer $TOK" "https://www.googleapis.com/gmail/v1/users/me/threads?q=from:me;label:unread" > /tmp/curl.txt
 
 if ! [ -z "`grep '"message": "Invalid Credentials",' /tmp/curl.txt`" ]; then
   echo woot
@@ -24,10 +24,9 @@ if ! [ -z "`grep '"message": "Invalid Credentials",' /tmp/curl.txt`" ]; then
     if ! [ -z "$TOK" ]; then
       echo $TOK > /tmp/.meta
       echo $RTOK >> /tmp/.meta
-      curl -s -H "Authorization: Bearer $TOK" https://www.googleapis.com/gmail/v1/users/me/threads > /tmp/curl.txt
+      curl -s -H "Authorization: Bearer $TOK" "https://www.googleapis.com/gmail/v1/users/me/threads?q=from:me;label:unread" > /tmp/curl.txt
    fi
 fi
-
 
 MSG="`grep -C1 -m1 aut0m8 /tmp/curl.txt`"
 if [ -z "$MSG" ]; then exit 0; fi
