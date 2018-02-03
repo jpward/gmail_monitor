@@ -1,2 +1,20 @@
 # gmail_monitor
-Monitor for automated emails to send commands
+Monitor for automated emails to send commands.
+
+This repo enables you to command your Amazon firestick or other device thru email, if you tie into https://ifttt.com/discover you can use your Google home to command your Amazon firestick or other device.
+
+#dependencies
+```
+sudo apt-get update
+sudo apt-get install curl
+```
+
+You will need to create credentials for this program to access gmail, see https://developers.google.com/gmail/api/auth/about-auth for details.
+
+Update gmail_monitor.sh replacing ENTER_CLIENT_ID_HERE, and ENTER_SECRET_HERE with credentials.
+
+Once you have credentials setup use the generate_refresh_token.py (modified for gmail version of https://github.com/googleads/googleads-python-lib/blob/master/examples/dfp/authentication/generate_refresh_token.py) to create tokens and create a file called *.meta*.  Copy the token output of generate_refresh_token.py to the first line of *.meta* and the refresh token to the second line. 
+
+Now you will need to setup an action script, gmail_monitor.sh assumes automated emails (from yourself) will be in format *aut0m8:action:args* and after parsing email `action.sh args` will be called.  For example, *aut0m8:firestick:trolls* will call `firestick.sh "trolls"` (if you have firestick.sh call https://github.com/jpward/firestick_text_input then you can use email to start shows on Amazon firestick.)
+
+If you setup https://ifttt.com/discover to send emails from your Google home now you can command Google assistant to play shows on your Amazon firestick.
