@@ -28,8 +28,11 @@ if ! [ -z "`grep '"message": "Invalid Credentials",' /tmp/curl.txt`" ]; then
    fi
 fi
 
-MSG="`grep -C1 -m1 aut0m8 /tmp/curl.txt`"
-if [ -z "$MSG" ]; then exit 0; fi
+MSG="`grep -C1 -m1 aut0m8 /tmp/curl.txt || echo ""`"
+if [ -z "$MSG" ]; then
+  sleep 3
+  $0
+fi
 echo $MSG
 
 ID="`echo $MSG | cut -d',' -f1 | sed 's/\"id\": \"\(.*\)\"/\1/'`"
@@ -41,3 +44,7 @@ INPUT="`echo $CMD | cut -d':' -f3`"
 curl -H "Authorization: Bearer $TOK" https://www.googleapis.com/gmail/v1/users/me/threads/$ID/trash -X POST --header "Content-length:0" &
 
 $HERE/${SCRIPT}.sh "$INPUT"
+
+sleep 3
+$0
+
