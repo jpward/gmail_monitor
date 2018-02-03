@@ -3,7 +3,7 @@ Monitor for automated emails to send commands.
 
 This repo enables you to command your Amazon firestick or other device thru email, if you tie into https://ifttt.com/discover you can use your Google home to command your Amazon firestick or other device.
 
-#dependencies
+#dependencies (a touch of crazy)
 ```
 sudo apt-get update
 sudo apt-get install curl
