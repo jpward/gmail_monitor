@@ -7,6 +7,8 @@ This repo enables you to command your Amazon firestick or other device thru emai
 ```
 sudo apt-get update
 sudo apt-get install curl
+sudo apt-get install python-pip
+sudo pip install oauth2client
 ```
 
 You will need to create credentials for this program to access gmail, see https://developers.google.com/gmail/api/auth/about-auth for details.
