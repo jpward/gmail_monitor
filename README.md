@@ -20,3 +20,5 @@ Once you have credentials setup use the generate_refresh_token.py (modified for 
 Now you will need to setup an action script, gmail_monitor.sh assumes automated emails (from yourself) will be in format *aut0m8:action:args* and after parsing email `action.sh args` will be called.  For example, *aut0m8:firestick:trolls* will call `firestick.sh "trolls"` (if you have firestick.sh call https://github.com/jpward/firestick_text_input then you can use email to start shows on Amazon firestick.)
 
 If you setup https://ifttt.com/discover to send emails from your Google home now you can command Google assistant to play shows on your Amazon firestick.
+
+![High-level-diagram](/imgs/google_home_to_firestick.jpg)
