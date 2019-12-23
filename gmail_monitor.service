@@ -1,5 +1,6 @@
 Description=Monitor gmail for automation commands
-After=network.target
+After=network.target adb-starter.service
+Requires=adb-starter.service
 
 [Service]
 Type=simple
