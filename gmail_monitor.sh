@@ -11,7 +11,7 @@ work() {
 
   TOK="`cat /tmp/.meta | head -1`"
   RTOK="`cat /tmp/.meta | tail -1`"
-  curl -s -H "Authorization: Bearer $TOK" "https://www.googleapis.com/gmail/v1/users/me/threads?q=from:me;label:unread" > /tmp/curl.txt
+  curl -s -H "Authorization: Bearer $TOK" "https://www.googleapis.com/gmail/v1/users/me/threads?q=from:me+OR+from:action@ifttt.com;label:unread" > /tmp/curl.txt
 
   if ! [ -z "`grep '"message": "Invalid Credentials",' /tmp/curl.txt`" ]; then
     echo woot
@@ -29,7 +29,10 @@ work() {
      fi
   fi
 
-  MSG="`grep -C1 -m1 aut0m8 /tmp/curl.txt || echo ""`"
+  # Get rid of IFTTT junk at end of email, needed for new email me function
+  #MSG="`grep -C1 -m1 aut0m8 /tmp/curl.txt | sed 's/ If You say \&quot;.*",$/",/' || echo ""`"
+  MSG="`grep -C1 -m1 aut0m8 /tmp/curl.txt | sed 's/:3nd.*",/",/' || echo ""`"
+
   if [ -z "$MSG" ]; then
     return
   fi
@@ -49,5 +52,5 @@ work() {
 RUN=true
 while $RUN; do
   work
-  sleep 3
+  sleep 1
 done
