@@ -41,12 +41,16 @@ work() {
   ID="`echo $MSG | cut -d',' -f1 | sed 's/\"id\": \"\(.*\)\"/\1/'`"
   CMD="`echo $MSG | cut -d',' -f2 | sed 's/\"snippet\": \"\(.*\)\"/\1/'`"
 
-  SCRIPT="`echo $CMD | cut -d':' -f2`"
-  INPUT="`echo $CMD | cut -d':' -f3`"
+  SCRIPT_PLUS_INPUT="`echo $CMD | cut -d':' -f2- | sed -e 's/:/ /'`"
+  SCRIPT="`echo ${SCRIPT_PLUS_INPUT} | cut -d' ' -f1 | tr 'A-Z' 'a-z'`"
+  INPUT="`echo ${SCRIPT_PLUS_INPUT} | cut -d' ' -f2-`"
 
   curl -H "Authorization: Bearer $TOK" https://www.googleapis.com/gmail/v1/users/me/threads/$ID/trash -X POST --header "Content-length:0" &
-
-  $HERE/${SCRIPT}.sh "$INPUT"
+  if [ -a $HERE/${SCRIPT}.sh ]; then
+    $HERE/${SCRIPT}.sh "$INPUT"
+  else
+    $HERE/repeat.sh "${SCRIPT} not a valid command, did you mean play ${SCRIPT}?"
+  fi
 }
 
 RUN=true
