@@ -18,7 +18,7 @@ elif [ "$1" = "open_BG" ] || [ "$1" = "close_BG" ]; then
   for r in {1..36}; do
     OPEN=false
     CLOSE=false
-    W="$(curl "http://api.openweathermap.org/data/2.5/weather?zip=12137,us&appid=db87711a1b6e01564dc4ccb814a720ed&units=imperial")"
+    W="$(curl "http://api.openweathermap.org/data/2.5/weather?zip=12137,us&appid=ADD_APP_ID_HERE&units=imperial")"
     CURR_OUTDOOR_TEMP=$(echo $W | jq .main.temp)
     #date -u -d @$(($(echo $W | jq .sys.sunrise) + $(echo $W | jq .timezone))) +"%T"
     #date -u -d @$(($(echo $W | jq .sys.sunset) + $(echo $W | jq .timezone))) +"%T"
