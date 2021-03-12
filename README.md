@@ -3,7 +3,7 @@ Monitor for automated emails to send commands.
 
 This repo enables you to command your Amazon firestick or other device thru email, if you tie into https://ifttt.com/discover you can use your Google home to command your Amazon firestick or other device.
 
-# dependencies (a touch of crazy)
+# Dependencies (a touch of crazy)
 ```
 sudo apt-get update
 sudo apt-get install curl
@@ -21,4 +21,11 @@ Now you will need to setup an action script, gmail_monitor.sh assumes automated 
 
 If you setup https://ifttt.com/discover to send emails from your Google home now you can command Google assistant to play shows on your Amazon firestick.
 
+# Architecture
+High level diagram of components and data flow
 ![High-level-diagram](/imgs/google_home_to_firestick.jpg)
+
+Repos providing functionality above:
+- Firestick control - https://github.com/jpward/firestick_text_input
+- Open garage door - https://github.com/jpward/gdoor_server
+- Play music from youtube over chromecast - https://github.com/jpward/yt-2-chromecast
