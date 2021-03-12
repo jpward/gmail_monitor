@@ -29,3 +29,4 @@ Repos providing functionality above:
 - Firestick control - https://github.com/jpward/firestick_text_input
 - Open garage door - https://github.com/jpward/gdoor_server
 - Play music from youtube over chromecast - https://github.com/jpward/yt-2-chromecast
+- Play error message over chromecast - https://github.com/jpward/text-2-chromecast
