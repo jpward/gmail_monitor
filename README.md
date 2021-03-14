@@ -26,7 +26,7 @@ High level diagram of components and data flow
 ![High-level-diagram](/imgs/google_home_to_firestick.jpg)
 
 Repos providing functionality above:
-- Firestick control - https://github.com/jpward/firestick_text_input
-- Open garage door - https://github.com/jpward/gdoor_server
-- Play music from youtube over chromecast - https://github.com/jpward/yt-2-chromecast
-- Play error message over chromecast - https://github.com/jpward/text-2-chromecast
+- Firestick control - https://github.com/jpward/firestick_text_input - [example](https://github.com/jpward/gmail_monitor/blob/master/imgs/video.mp4?raw=true)
+- Open garage door - https://github.com/jpward/gdoor_server 
+- Play music from youtube over chromecast - https://github.com/jpward/yt-2-chromecast - [example](https://github.com/jpward/gmail_monitor/blob/master/imgs/music.mp4?raw=true)
+- Play error message over chromecast - https://github.com/jpward/text-2-chromecast - [example](https://github.com/jpward/gmail_monitor/blob/master/imgs/error.mp4?raw=true)
