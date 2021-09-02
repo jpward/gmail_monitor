@@ -9,8 +9,9 @@ COMFORT_TEMP=$(cat ${HERE}/../comfort/temperature.txt)
 #Update with actual indoor when available
 CURR_INDOOR_TEMP=$((COMFORT_TEMP + 1))
 
-if [ "$1" = "open" ] || [ "$1" = "close" ]; then
-  ${HERE}/comfort.sh $1_BG &
+if ( echo "$1" | grep -iq 'open\|close' ) && ( echo "$1" | grep -qv "_BG"); then
+  OPEN_OR_CLOSE=$(echo "$1" | grep -io 'open\|close' | tr 'A-Z' 'a-z')
+  ${HERE}/comfort.sh ${OPEN_OR_CLOSE}_BG &
 elif [ "$(echo $1 | cut -d';' -f1)" = "set" ]; then
   echo $1 | cut -d';' -f2 > ${HERE}/../comfort/temperature.txt
 elif [ "$1" = "open_BG" ] || [ "$1" = "close_BG" ]; then
